@@ -1,0 +1,12 @@
+year,consolidated_gms_usd_bn,etsy_marketplace_gms_usd_bn,revenue_usd_m,take_rate_pct,net_income_usd_m,active_buyers_m,active_sellers_m,source_confidence,primary_source
+2015,2.39,2.39,273.5,11.4,-54.1,24.0,1.6,K,https://www.sec.gov/Archives/edgar/data/1370637/000137063716000032/etsy1231201510k.htm
+2016,2.84,2.84,365.0,12.8,-29.9,28.6,1.7,K,https://www.sec.gov/Archives/edgar/data/0001370637/000137063717000018/etsy1231201610k.htm
+2017,3.25,3.25,441.2,13.6,81.8,33.4,1.9,K,https://www.sec.gov/Archives/edgar/data/0001370637/000137063718000020/etsy1231201710k.htm
+2018,3.93,3.93,603.7,15.4,77.5,39.4,2.1,K,https://www.sec.gov/Archives/edgar/data/0001370637/000137063720000046/etsy1231201910k.htm
+2019,4.97,4.7,818.4,16.5,95.9,46.4,2.7,K,https://www.sec.gov/Archives/edgar/data/0001370637/000137063720000046/etsy1231201910k.htm
+2020,10.28,9.4,1725.6,16.8,349.2,81.9,4.4,K,https://investors.etsy.com/sec-filings
+2021,13.49,12.2,2329.1,17.3,493.5,96.3,7.5,S/K,https://www.sec.gov/Archives/edgar/data/1370637/000137063722000020/exhibit99112312021.htm
+2022,13.32,11.8,2566.1,19.3,-694.3,95.1,7.5,K,https://www.sec.gov/Archives/edgar/data/1370637/000137063722000078/exhibit991q32022.htm
+2023,13.16,11.7,2748.2,20.9,307.6,96.5,9.0,S/K,https://investors.etsy.com/sec-filings/all-sec-filings/content/0001370637-25-000017/etsy-20241231.htm
+2024,12.6,10.9,2808.0,22.3,303.3,95.5,8.1,S,https://investors.etsy.com/sec-filings/all-sec-filings/content/0001370637-25-000017/etsy-20241231.htm
+2025,11.9,10.46,2880.0,24.0,163.0,86.5,5.6,S,https://www.sec.gov/Archives/edgar/data/1370637/000137063726000019/etsy-20251231.htm
