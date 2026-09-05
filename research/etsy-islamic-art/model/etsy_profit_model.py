@@ -8,7 +8,8 @@ Fee assumptions (Etsy US seller, 2026 schedule):
   - Payment processing US:  3.0% + $0.25 of total order (item + shipping + tax)
   - Offsite Ads (if the sale is attributed): 15% if shop made < $10k trailing 12 months,
                                              12% if >= $10k (mandatory at that point)
-  - Regulatory operating fee: 0% for US sellers (UK 0.32%, FR 0.40%, IT 0.25%, ES 0.40%, TR 1.1% examples)
+  - Regulatory operating fee: 0% for US sellers (2026: UK 0.48%, FR 1.14%, IT 0.80%, ES 0.88%, TR 1.67%)
+  - Offsite Ads fee is capped at $100 per order
 
 Run:  python3 etsy_profit_model.py            -> prints tables and writes ../data/*.csv
 """
@@ -23,7 +24,7 @@ PROC_PCT_US = 0.03
 PROC_FIXED_US = 0.25
 OFFSITE_LOW = 0.15   # < $10k trailing 12m revenue (optional tier)
 OFFSITE_HIGH = 0.12  # >= $10k trailing 12m revenue (mandatory tier)
-REG_FEE = {"US": 0.0, "UK": 0.0032, "FR": 0.004, "IT": 0.0025, "ES": 0.004, "TR": 0.011}
+REG_FEE = {"US": 0.0, "UK": 0.0048, "FR": 0.0114, "IT": 0.0080, "ES": 0.0088, "TR": 0.0167}  # 2026 rates (TR from 22 Jun 2026)
 
 @dataclass
 class Product:
@@ -43,7 +44,7 @@ def fee_stack(p: Product, offsite_share: float = 0.0, offsite_rate: float = OFFS
     listing = LISTING_FEE
     transaction = TRANSACTION_PCT * gross
     processing = proc_pct * gross + proc_fixed
-    offsite = offsite_share * offsite_rate * gross
+    offsite = offsite_share * min(offsite_rate * gross, 100.0)  # $100/order cap
     regulatory = REG_FEE[country] * gross
     etsy_total = listing + transaction + processing + offsite + regulatory
     net_after_etsy = gross - etsy_total
