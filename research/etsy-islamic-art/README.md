@@ -33,6 +33,7 @@ Supporting files:
 | `data/observed_prices.csv` | 19 real price points observed for Islamic art items, with source and provenance |
 | `data/islamic_art_etsy_shops.csv` | 27 Islamic art Etsy shops with lifetime sales, admirers, products, location |
 | `data/etsy_marketplace_timeseries.csv` | Etsy GMS, revenue, take rate, buyers, sellers 2015 to 2025 |
+| `data/shop_revenue_estimates.csv` and `model/shop_revenue_estimates.py` | Estimated lifetime and annual sales value and profit per shop |
 | `appendix/01` to `05` | Raw output of the five research threads with full source lists |
 
 ---
@@ -224,6 +225,56 @@ Note the "permanent sale" pricing pattern: leading metal sellers list at $122 to
 - Evergreen sub-niches carry the other nine months: nikkah and wedding gifting (islamicgiftsfavors, 29k sales, is essentially a wedding-favor shop), housewarming Bismillah pieces, Aqiqah and baby gifts, hifz-completion frames, couples' prayer mats.
 
 **Calendar.** Ramadan 2027 begins around 7 February 2027, Eid al-Fitr around 9 March 2027, Eid al-Adha around 16 May 2027. Given the July-to-November build-up, Ramadan 2027 listings should be live and gathering reviews by early December 2026, with ads scaling from mid-January.
+
+### 3.5 Estimated sales value and profit per shop (`data/shop_revenue_estimates.csv`)
+
+Etsy does not publish per-shop revenue, so this pairs each shop's lifetime sales count with an average order value for its product mix, drawn from the observed prices in 3.3 and the cost research in section 4. Profit here is contribution after Etsy fees, goods and shipping, before owner labour, ads and fixed costs. Script: `model/shop_revenue_estimates.py`.
+
+Average order value bands used:
+
+| Product mix | AOV low | AOV mid | AOV high | Contribution margin |
+|---|---|---|---|---|
+| Metal wall art | $85 | $105 | $130 | 47% |
+| Favors and gift sets | $25 | $35 | $50 | 45% |
+| Prints, canvas, paintings | $30 | $45 | $80 | 35% |
+| Decor and tabletop | $35 | $50 | $70 | 45% |
+| Digital downloads | $5 | $7 | $12 | 80% |
+
+Estimated value of sales, mid case, top 12 shops:
+
+| Shop | Mix | Lifetime sales | Lifetime GMV | Years | Annual GMV | Annual contribution |
+|---|---|---|---|---|---|---|
+| IslamicWallArtStore | metal | 31,430 | $3.30m | 7 | $471k | $222k |
+| IslamicMetalWallArt | metal | 19,872 | $2.09m | 4* | $522k | $245k |
+| islamicgiftsfavors | favors | 29,327 | $1.03m | 5 | $205k | $92k |
+| IslamicWallArtDecor | metal | 9,560 | $1.00m | 4* | $251k | $118k |
+| BreatheIslamicArt | metal | 4,400 | $462k | 3 | $154k | $72k |
+| WallArtIslamic | metal | 3,672 | $386k | 5 | $77k | $36k |
+| BestIslamicGifts | metal | 2,068 | $217k | 4* | $54k | $26k |
+| ArtziCulture | prints | 3,328 | $150k | 4* | $37k | $13k |
+| TheQuranStore | favors | 4,161 | $146k | 4 | $36k | $16k |
+| AdornYourWallsShop | prints | 2,401 | $108k | 4* | $27k | $9k |
+| PeacefulArtsUk | prints | 2,126 | $96k | 4* | $24k | $8k |
+| IslamicArtPrintables | digital | 6,999 | $49k | 4* | $12k | $10k |
+
+\* years assumed at 4 where no "since" date was found; the CSV flags these.
+
+Totals across the 27-shop sample:
+
+| Measure | Low | Mid | High |
+|---|---|---|---|
+| Lifetime GMV | $7.5m | $9.6m | $12.4m |
+| Annual GMV run-rate | | $2.0m | |
+| Annual contribution (seller profit before labour, ads, overheads) | | $0.92m | |
+| Lifetime contribution | | $4.4m | |
+
+By product mix (mid case): metal 8 shops, $7.6m lifetime and $1.56m a year; favors 4 shops, $1.25m and $261k; prints 9 shops, $532k and $139k; decor 3 shops, $144k and $26k; digital 2 shops, $64k and $15k.
+
+**What this says.** Metal is 79% of the value in the sample from 30% of the shops. The four largest shops together clear roughly $1.4m a year in sales and about $680k in contribution, which supports a small team each. The biggest digital shop by count (IslamicArtPrintables, 7k sales) is worth about $12k a year at a $7 ticket, less than a metal shop doing 120 pieces. Favors sell in volume but at a third of the ticket; islamicgiftsfavors' 29k sales are worth about a fifth of IslamicWallArtStore's 31k.
+
+**Whole-niche estimate (speculative).** The sample only includes shops Google surfaced and excludes jewellery, apparel and most seasonal-only decor shops. If the sample captures a quarter to a half of niche volume, Islamic art and decor on Etsy is roughly $4m to $8m a year in sales, or 0.04% to 0.08% of Etsy's $10.5bn GMS. That is small in Etsy terms and means share is taken from a handful of incumbents rather than from a rising tide.
+
+**Caveats.** Sales counts are lifetime and snippet-dated (one shop appeared at both 12,787 and 19,872). AOVs are assumed from a 19-point price sample; a shop that sells mainly 48-inch pieces or bundles would sit above the high band, and one selling mainly clocks or small sets below the low band. Etsy sales counts include multi-quantity orders as one sale, so favors shops' true GMV per "sale" may be higher than the band.
 
 ---
 
